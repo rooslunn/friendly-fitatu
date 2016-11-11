@@ -67,7 +67,7 @@ class Busket
      * @ORM\ManyToOne(targetEntity="VatType", inversedBy="buskets")
      * @ORM\JoinColumn(name="vat_type_id", referencedColumnName="id")
      */
-    private $vatType;
+    private $vatType;2
 
     /**
      * Get id

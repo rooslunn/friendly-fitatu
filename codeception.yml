@@ -19,3 +19,11 @@ modules:
             user: ''
             password: ''
             dump: tests/_data/dump.sql
+        Symfony:
+            app_path: 'app'
+            var_path: 'var'
+            environment: 'test'
+        PhpBrowser:
+            url: http://localhost:8000
+            headers:
+              env: test
