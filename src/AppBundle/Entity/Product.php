@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Exception\ProductPriceCantBeNegative;
 
 /**
  * Product
@@ -39,7 +40,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2, options={"unsigned":true})
      */
     private $price;
 
@@ -109,12 +110,15 @@ class Product
     /**
      * Set price
      *
-     * @param string $price
-     *
+     * @param float|string $price
      * @return Product
+     * @throws \AppBundle\Exception\ProductPriceCantBeNegative
      */
-    public function setPrice($price)
+    public function setPrice(float $price)
     {
+        if ($price < 0) {
+            throw new ProductPriceCantBeNegative('Can`t set negative price for product');
+        }
         $this->price = $price;
 
         return $this;
