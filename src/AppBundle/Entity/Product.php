@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Exception\ProductPriceCantBeNegative;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -40,7 +41,8 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="price", type="decimal", precision=10, scale=2, options={"unsigned":true})
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
+     * @Assert\GreaterThan(0)
      */
     private $price;
 

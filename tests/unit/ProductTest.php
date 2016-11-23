@@ -16,6 +16,9 @@ class ProductTest extends \Codeception\Test\Unit
     {
     }
 
+    /**
+     * @return int
+     */
     private function createTestProductInDb(): int
     {
         return $this->tester->haveInRepository('AppBundle\Entity\Product', [
@@ -57,6 +60,8 @@ class ProductTest extends \Codeception\Test\Unit
                 $product->setPrice('-100');
             }
         );
+        $em->persist($product);
+        $em->flush();
 
         // Assert
         $this->tester->dontSeeInRepository('AppBundle\Entity\Product', ['id' => $id, 'price' => '-100']);
