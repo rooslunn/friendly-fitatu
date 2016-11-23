@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * VatType
@@ -32,6 +33,7 @@ class VatType
      * @var string
      *
      * @ORM\Column(name="value", type="decimal", precision=4, scale=3)
+     * @Assert\GreaterThan(0)
      */
     private $value;
 
