@@ -38,12 +38,19 @@ class ProductTest extends \Codeception\Test\Unit
         $em = $this->getModule('Doctrine2')->em;
         $product = $em->find('AppBundle\Entity\Product', $id);
         $product->setName('Socks2');
+        $product->setDescription('Socks2');
+        $product->setPrice('200.47');
         $em->persist($product);
         $em->flush();
 
         // Assert
         $this->assertEquals('Socks2', $product->getName());
-        $this->tester->seeInRepository('AppBundle\Entity\Product', ['id' => $id, 'name' => 'Socks2']);
+        $this->tester->seeInRepository('AppBundle\Entity\Product', [
+            'id' => $id,
+            'name' => 'Socks2',
+            'description' => 'Socks2',
+            'price' => '200.47',
+        ]);
         $this->tester->dontSeeInRepository('AppBundle\Entity\Product', ['id' => $id, 'name' => 'Socks1']);
     }
 
