@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Api;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ListBusketController extends Controller
 {
     /**
-     * @Route("/busket/{busket_id}", requirements={"busket_id": "\d+"})
+     * @Route("/api/busket/{busket_id}", requirements={"busket_id": "\d+"})
      * @param int $busket_id
      * @return JsonResponse
      * @throws \LogicException
