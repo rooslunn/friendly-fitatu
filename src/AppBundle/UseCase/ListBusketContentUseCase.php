@@ -10,20 +10,20 @@ namespace AppBundle\UseCase;
 
 use AppBundle\Repository\BusketRepository;
 
-class ListBusketUseCase
+class ListBusketContentUseCase
 {
     /**
      * @var \AppBundle\Repository\BusketRepository
      */
     protected $repository;
 
-    public function __construct(BusketRepository $repository)
+    public function __construct(BusketContentRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function execute()
+    public function execute(int $busket_id)
     {
-        return $this->repository->findAll();
+        return $this->repository->;
     }
 }
