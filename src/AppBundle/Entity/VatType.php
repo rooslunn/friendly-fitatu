@@ -39,9 +39,9 @@ class VatType
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Busket", mappedBy="vatType")
+     * @ORM\OneToMany(targetEntity="BusketContent", mappedBy="vatType")
      */
-    private $buskets;
+    private $in_buskets;
 
     /**
      * Get id

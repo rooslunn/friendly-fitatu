@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Busket
  *
- * @ORM\Table(name="busket")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\BusketRepository")
+ * @ORM\Table(name="busket_content")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\BusketContentRepository")
  */
-class Busket
+class BusketContent
 {
     /**
      * @var int
@@ -20,6 +20,13 @@ class Busket
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="busket_id", type="integer")
+     */
+    private $busket_id;
 
     /**
      * @var int
@@ -58,16 +65,22 @@ class Busket
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="buskets")
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="in_buskets")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     private $product;
 
     /**
-     * @ORM\ManyToOne(targetEntity="VatType", inversedBy="buskets")
+     * @ORM\ManyToOne(targetEntity="VatType", inversedBy="in_buskets")
      * @ORM\JoinColumn(name="vat_type_id", referencedColumnName="id")
      */
     private $vatType;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Busket", inversedBy="in_buskets")
+     * @ORM\JoinColumn(name="busket_id", referencedColumnName="id")
+     */
+    private $busket;
 
     /**
      * Get id
@@ -189,6 +202,22 @@ class Busket
     public function setVat(string $vat)
     {
         $this->vat = $vat;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBusketId(): int
+    {
+        return $this->busket_id;
+    }
+
+    /**
+     * @param int $busket_id
+     */
+    public function setBusketId(int $busket_id)
+    {
+        $this->busket_id = $busket_id;
     }
 }
 

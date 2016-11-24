@@ -47,9 +47,9 @@ class Product
     private $price;
 
     /**
-     * @ORM\OneToMany(targetEntity="Busket", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="BusketContent", mappedBy="product")
      */
-    private $buskets;
+    private $in_buskets;
 
     /**
      * Get id
