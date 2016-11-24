@@ -8,12 +8,14 @@
 
 namespace AppBundle\UseCase;
 
-use AppBundle\Repository\BusketContentRepository;
+use AppBundle\Entity\Busket;
+use AppBundle\Repository\{
+    BusketContentRepository,
+    BusketRepository
+};
 
 class ListBusketContentUseCase
 {
-    const DEFAULT_BUSKET = 1;
-
     /**
      * @var \AppBundle\Repository\BusketContentRepository
      */
@@ -24,8 +26,8 @@ class ListBusketContentUseCase
         $this->repository = $repository;
     }
 
-    public function execute(int $busket_id = self::DEFAULT_BUSKET)
+    public function execute(Busket $busket)
     {
-        return $this->repository->findByBusket($busket_id);
+        return $this->repository->findByBusket($busket->getId());
     }
 }

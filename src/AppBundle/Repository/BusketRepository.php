@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\Busket;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -11,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class BusketRepository extends EntityRepository
 {
+    const DEFAULT_BUSKET_NAME = 'Default Busket';
+
+    public function findDefaultBusket(): Busket
+    {
+        return $this->findOneBy(['name' => self::DEFAULT_BUSKET_NAME]);
+    }
 }

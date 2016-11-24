@@ -8,13 +8,13 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
+use AppBundle\Repository\BusketRepository;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Busket;
 
 class DefaultBusket implements FixtureInterface
 {
-
     /**
      * Load data fixtures with the passed EntityManager
      *
@@ -23,7 +23,7 @@ class DefaultBusket implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $busket = new Busket();
-        $busket->setName('Test Busket');
+        $busket->setName(BusketRepository::DEFAULT_BUSKET_NAME);
         $manager->persist($busket);
         $manager->flush();
     }

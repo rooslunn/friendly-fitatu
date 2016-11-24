@@ -2,7 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Repository\BusketRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Busket
@@ -26,7 +28,7 @@ class BusketContent
      *
      * @ORM\Column(name="busket_id", type="integer")
      */
-    private $busket_id;
+    private $busketId;
 
     /**
      * @var int
@@ -60,6 +62,7 @@ class BusketContent
      * @var int
      *
      * @ORM\Column(name="qty", type="integer")
+     * @Assert\GreaterThan(0)
      */
     private $qty;
 
@@ -209,7 +212,7 @@ class BusketContent
      */
     public function getBusketId(): int
     {
-        return $this->busket_id;
+        return $this->busketId;
     }
 
     /**
@@ -217,7 +220,61 @@ class BusketContent
      */
     public function setBusketId(int $busket_id)
     {
-        $this->busket_id = $busket_id;
+        $this->busketId = $busket_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVatType()
+    {
+        return $this->vatType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBusket()
+    {
+        return $this->busket;
+    }
+
+    /**
+     * @param mixed $product
+     * @return BusketContent
+     */
+    public function setProduct($product)
+    {
+        $this->product = $product;
+        return $this;
+    }
+
+    /**
+     * @param mixed $vatType
+     * @return BusketContent
+     */
+    public function setVatType($vatType)
+    {
+        $this->vatType = $vatType;
+        return $this;
+    }
+
+    /**
+     * @param mixed $busket
+     * @return BusketContent
+     */
+    public function setBusket($busket)
+    {
+        $this->busket = $busket;
+        return $this;
     }
 }
 

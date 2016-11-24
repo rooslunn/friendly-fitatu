@@ -3,12 +3,24 @@
 {% block body %}
     <h2>Your Busket Is Here</h2>
     <table class="table table-hover">
+        <tr>
+            <th>Product Name</th>
+            <th>Qty</th>
+            <th>Price, $</th>
+            <th>Total, $</th>
+            <th>VAT, %</th>
+            <th>Total+VAT, $</th>
+        </tr>
         {% for item in items %}
             <tr>
-                <td>{{ item.product }}</td>
-                <td>{{ item.vat }}</td>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.qty }}</td>
+                <td>{{ item.price|number_format(2) }}</td>
+                <td>{{ (item.price * item.qty)|number_format(2) }}</td>
+                <td>{{ (item.vat * 100)|number_format(2) }}</td>
+                <td>{{ ((item.price * item.qty)*(1+item.vat))|number_format(2) }}</td>
             </tr>
         {% endfor %}
     </table>
-    <a class="btn btn-default" href="add" role="button">Add Items</a>
+    <a class="btn btn-default" href="add" role="button">Add Item</a>
 {% endblock %}
