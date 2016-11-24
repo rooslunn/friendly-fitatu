@@ -9,5 +9,5 @@ A Symfony project created on November 10, 2016, 5:54 pm.
 - set up db_name and credentials
 - php bin/console doctrine:database:create
 - php bin/console doctrine:migrations:migrate
-- php bin/codecept run
+- php vendor/bin/codecept run
 
