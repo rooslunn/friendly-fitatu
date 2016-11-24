@@ -1,18 +1,17 @@
-friendly-fitatu
+Friendly-Fitatu
 ===============
 
-A Symfony project created on November 10, 2016, 5:54 pm.
-# friendly-fitatu
+A Symfony Test project.
 
-- Clone repo
-- Install dependencies
-    - composer install
-- Set up DB parameters in app/config/parameters.yml
-- Prepare DB:
-    - php bin/console doctrine:database:create
-    - php bin/console doctrine:migrations:migrate
-    - php bin/console doctrine:fixtures:load
-- Check project up and running
-    - php bin/console server:start
-    - php vendor/bin/codecept run
+1. Clone repo
+2. Install project dependencies
+    - `composer install`
+3. Set up DB parameters in app/config/parameters.yml
+4. Prepare DB:
+    - `php bin/console doctrine:database:create`
+    - `php bin/console doctrine:migrations:migrate`
+    - `php bin/console doctrine:fixtures:load`
+5. Check project up and running
+    - `php bin/console server:start`
+    - `php vendor/bin/codecept run`
 
