@@ -12,6 +12,8 @@ use AppBundle\Repository\BusketContentRepository;
 
 class ListBusketContentUseCase
 {
+    const DEFAULT_BUSKET = 1;
+
     /**
      * @var \AppBundle\Repository\BusketContentRepository
      */
@@ -22,7 +24,7 @@ class ListBusketContentUseCase
         $this->repository = $repository;
     }
 
-    public function execute(int $busket_id)
+    public function execute(int $busket_id = self::DEFAULT_BUSKET)
     {
         return $this->repository->findByBusket($busket_id);
     }
