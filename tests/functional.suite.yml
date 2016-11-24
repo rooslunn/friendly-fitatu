@@ -1,7 +1,8 @@
 class_name: FunctionalTester
 modules:
     enabled:
-        - Doctrine2:
-            depends: Symfony
+        - PhpBrowser
+        - REST:
+            depends: PhpBrowser
         - Asserts
         - \Helper\Functional

@@ -8,12 +8,12 @@
 
 namespace AppBundle\UseCase;
 
-use AppBundle\Repository\BusketRepository;
+use AppBundle\Repository\BusketContentRepository;
 
 class ListBusketContentUseCase
 {
     /**
-     * @var \AppBundle\Repository\BusketRepository
+     * @var \AppBundle\Repository\BusketContentRepository
      */
     protected $repository;
 
@@ -24,6 +24,6 @@ class ListBusketContentUseCase
 
     public function execute(int $busket_id)
     {
-        return $this->repository->;
+        return $this->repository->findByBusket($busket_id);
     }
 }
