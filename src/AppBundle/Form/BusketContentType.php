@@ -25,7 +25,7 @@ class BusketContentType extends AbstractType
                 'choices' => $options['products'],
                 'choice_label' => function ($value, $key, $index) {
                     /** @var Product $value */
-                    return sprintf('%s (%s)', $value->getName(), $value->getPrice());
+                    return sprintf('%s (%s)', $value->getName(), money_format('%i', $value->getPrice()));
                 },
                 'choice_value' => 'price',
                 'expanded' => false,
@@ -35,14 +35,17 @@ class BusketContentType extends AbstractType
                 'choices' => $options['vat_types'],
                 'choice_label' => function ($value, $key, $index) {
                     /** @var VatType $value */
-                    return sprintf('%s (%s)', $value->getName(), $value->getValue());
+                    return sprintf('%s (%s %%)', $value->getName(), number_format($value->getValue()*100, 2));
                 },
                 'choice_value' => 'value',
                 'expanded' => false,
                 'multiple' => false,
             ])
             ->add('qty')
-            ->add('save', SubmitType::class, ['label' => 'Add Item']);
+            ->add('save', SubmitType::class, [
+                'label' => 'Add Item',
+                'attr' => ['class' => 'btn-primary']
+            ]);
     }
 
     /**

@@ -1,3 +1,10 @@
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 style="color: #2e6da4">Add Item to Busket</h2>
+    <hr>
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
