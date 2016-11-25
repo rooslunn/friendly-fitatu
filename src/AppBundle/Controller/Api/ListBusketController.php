@@ -19,7 +19,8 @@ class ListBusketController extends Controller
     {
         $busketRepo = $this->getDoctrine()->getRepository('AppBundle:BusketContent');
         $useCase = new ListBusketContentUseCase($busketRepo);
-        $busketContent = $useCase->execute($busket_id);
+        $busketContent = $useCase->execute(
+            $this->getDoctrine()->getRepository('AppBundle:Busket')->findDefaultBusket());
         return new JsonResponse($busketContent);
     }
 }
