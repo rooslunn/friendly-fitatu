@@ -30,6 +30,13 @@ class VatTypes implements FixtureInterface
             $vat_new->setValue(random_int(1, 50)/100);
             $manager->persist($vat_new);
         }
+
+        // Vat for acceptance test
+        $vat_new = clone $vat;
+        $vat_new->setName('VatType Test');
+        $vat_new->setValue(0.14);
+        $manager->persist($vat_new);
+
         $manager->flush();
     }
 }

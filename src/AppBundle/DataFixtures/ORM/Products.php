@@ -32,6 +32,13 @@ class Products implements FixtureInterface
             $product_new->setPrice(random_int(1, 99) * $i);
             $manager->persist($product_new);
         }
+
+        // Product for acceptance test
+        $product_new = clone $product;
+        $product_new->setName('Product Test');
+        $product_new->setPrice(100);
+        $manager->persist($product_new);
+
         $manager->flush();
     }
 }
